@@ -1,0 +1,125 @@
+/* style.css */
+/* Atividade 5 - folha de estilos externa, usada nas páginas da lista */
+
+body {
+    background-color: rgb(245, 245, 245);
+    color: #222222;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 0 20px 40px 20px;
+}
+
+h1 {
+    color: rgb(0, 174, 255);
+}
+
+h2 {
+    color: rgb(0, 120, 190);
+}
+
+span {
+    color: crimson;
+}
+
+section {
+    border-top: 2px dotted rgb(0, 0, 0);
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+div {
+    background-color: rgb(189, 209, 228);
+    padding: 8px;
+}
+
+a {
+    color: rgb(0, 90, 160);
+}
+
+a:hover {
+    color: crimson;
+    text-decoration: underline;
+}
+
+nav a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 12px;
+    background-color: rgb(0, 174, 255);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: crimson;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+    background-color: bisque;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+pre {
+    background-color: rgb(40, 40, 40);
+    color: rgb(220, 220, 220);
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+form {
+    background-color: bisque;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 6px;
+    margin-top: 3px;
+    border: 1px solid #999999;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+input[type="submit"] {
+    width: auto;
+    background-color: rgb(0, 174, 255);
+    color: white;
+    padding: 8px 20px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: crimson;
+}

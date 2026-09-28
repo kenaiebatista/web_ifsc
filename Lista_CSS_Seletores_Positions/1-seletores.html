@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1 - CSS Dinner (Seletores CSS)</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0 auto;
+            max-width: 950px;
+            padding: 0 20px 40px 20px;
+        }
+        h1 { color: #00aeff; }
+        h2 { color: #0078be; margin-top: 30px; }
+        p.intro { background: bisque; padding: 10px 15px; border-radius: 8px; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            background-color: #fff;
+        }
+        table, th, td { border: 1px solid #999; }
+        th, td { padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #00aeff; color: white; }
+        code {
+            background-color: #282828;
+            color: #dcdcdc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        tr:nth-child(even) { background-color: #eef6fb; }
+        .grupo { background-color: #ffe4b5 !important; font-weight: bold; }
+        a { color: #005aa0; }
+        a:hover { color: crimson; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 1 - Seletores CSS (CSS Diner)</h1>
+
+    <p class="intro">
+        Jogo jogado: <a href="https://flukeout.github.io/" target="_blank">CSS Diner</a>, um jogo que
+        ensina seletores CSS pedindo para "selecionar" pratos, garfos e outros itens de uma mesa
+        (representada em HTML) usando apenas CSS. A tabela abaixo resume o seletor usado em cada nível
+        e o que ele faz, servindo como registro/gabarito de todos os níveis jogados.
+    </p>
+
+    <table>
+        <caption><strong>Solução resumida de todos os níveis do CSS Diner</strong></caption>
+        <thead>
+            <tr><th>Nível</th><th>Seletor utilizado</th><th>O que o seletor faz</th></tr>
+        </thead>
+        <tbody>
+            <tr class="grupo"><td colspan="3">Seletores básicos</td></tr>
+            <tr><td>1</td><td><code>plate</code></td><td>Seleciona todos os elementos do tipo <code>plate</code> (seletor de tipo/tag).</td></tr>
+            <tr><td>2</td><td><code>.small</code></td><td>Seleciona todos os elementos que têm a classe <code>small</code>.</td></tr>
+            <tr><td>3</td><td><code>#outside</code></td><td>Seleciona o único elemento com o id <code>outside</code>.</td></tr>
+            <tr><td>4</td><td><code>.small, .medium</code></td><td>Agrupamento: seleciona todos os elementos com classe <code>small</code> OU <code>medium</code>.</td></tr>
+            <tr><td>5</td><td><code>table plate</code></td><td>Combinador descendente: seleciona <code>plate</code> que estejam dentro de <code>table</code>, em qualquer nível.</td></tr>
+            <tr><td>6</td><td><code>.small.round</code></td><td>Classes concatenadas: seleciona o elemento que tem AMBAS as classes <code>small</code> e <code>round</code>.</td></tr>
+            <tr><td>7</td><td><code>table &gt; plate</code></td><td>Combinador filho direto: seleciona apenas os <code>plate</code> que são filhos diretos de <code>table</code>.</td></tr>
+            <tr><td>8</td><td><code>*</code></td><td>Seletor universal: seleciona absolutamente todos os elementos da página.</td></tr>
+
+            <tr class="grupo"><td colspan="3">Combinadores de irmãos</td></tr>
+            <tr><td>9</td><td><code>.small + .small</code></td><td>Irmão adjacente: seleciona o <code>.small</code> que vem logo depois de outro <code>.small</code>.</td></tr>
+            <tr><td>10</td><td><code>.small ~ .medium</code></td><td>Irmão geral: seleciona todo <code>.medium</code> que venha depois de um <code>.small</code>, no mesmo nível (não precisa ser o próximo).</td></tr>
+
+            <tr class="grupo"><td colspan="3">Pseudo-classes estruturais</td></tr>
+            <tr><td>11</td><td><code>:first-child</code></td><td>Seleciona o elemento que é o primeiro filho do seu elemento pai.</td></tr>
+            <tr><td>12</td><td><code>:only-child</code></td><td>Seleciona o elemento que é o único filho do seu pai.</td></tr>
+            <tr><td>13</td><td><code>:last-child</code></td><td>Seleciona o elemento que é o último filho do seu pai.</td></tr>
+            <tr><td>14</td><td><code>:nth-child(odd)</code></td><td>Seleciona os filhos em posição ímpar (1º, 3º, 5º...) dentro do pai.</td></tr>
+            <tr><td>15</td><td><code>:nth-last-child(2)</code></td><td>Conta as posições de trás para frente: seleciona o penúltimo filho.</td></tr>
+            <tr><td>16</td><td><code>:first-of-type</code></td><td>Seleciona o primeiro elemento daquele tipo/tag entre os irmãos, ignorando outros tipos.</td></tr>
+            <tr><td>17</td><td><code>:nth-of-type(odd)</code></td><td>Seleciona, contando só entre elementos do mesmo tipo, os que estão em posição ímpar.</td></tr>
+            <tr><td>18</td><td><code>:empty</code></td><td>Seleciona elementos que não têm nenhum filho (nem texto) dentro deles.</td></tr>
+
+            <tr class="grupo"><td colspan="3">Negação e atributos</td></tr>
+            <tr><td>19</td><td><code>:not(.small)</code></td><td>Seleciona tudo que NÃO tenha a classe <code>small</code>.</td></tr>
+            <tr><td>20</td><td><code>[for]</code></td><td>Seleciona qualquer elemento que possua o atributo <code>for</code>, independente do valor.</td></tr>
+            <tr><td>21</td><td><code>[for="mom"]</code></td><td>Atributo com valor exato: <code>for</code> tem que ser igual a "mom".</td></tr>
+            <tr><td>22</td><td><code>[for~="mom"]</code></td><td>Atributo contém a palavra "mom" em uma lista de valores separados por espaço.</td></tr>
+            <tr><td>23</td><td><code>[for*="om"]</code></td><td>Atributo contém a substring "om" em qualquer parte do valor.</td></tr>
+            <tr><td>24</td><td><code>[for^="s"]</code></td><td>Atributo cujo valor começa com "s".</td></tr>
+            <tr><td>25</td><td><code>[for$="m"]</code></td><td>Atributo cujo valor termina com "m".</td></tr>
+
+            <tr class="grupo"><td colspan="3">Pseudo-elementos e desafios finais</td></tr>
+            <tr><td>26</td><td><code>::first-letter</code></td><td>Pseudo-elemento: seleciona apenas a primeira letra do conteúdo de texto do elemento.</td></tr>
+            <tr><td>27</td><td><code>table &gt; .small:first-child</code></td><td>Combinação de filho direto + pseudo-classe estrutural.</td></tr>
+            <tr><td>28</td><td><code>.round:not(.small)</code></td><td>Combinação de classe com negação: redondo, mas não pequeno.</td></tr>
+            <tr><td>29</td><td><code>plate ~ .small</code></td><td>Combinação de tipo com combinador de irmão geral.</td></tr>
+            <tr><td>30</td><td><code>table &gt; :nth-child(2)</code></td><td>Filho direto na 2ª posição, usada nos desafios finais que combinam tudo.</td></tr>
+            <tr><td>31</td><td><code>.medium ~ .round:last-child</code></td><td>Desafio combinado: irmão geral + pseudo-classe estrutural.</td></tr>
+            <tr><td>32</td><td><code>table &gt; *:not(.round)</code></td><td>Desafio final: filho direto, universal, negando uma classe.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Explicação detalhada de 2 níveis avançados (acima do nível 10)</h2>
+
+    <h3>Nível 17 - <code>:nth-of-type(odd)</code></h3>
+    <p>
+        Esse nível pede para selecionar itens em posições ímpares, mas contando apenas entre os
+        elementos <em>do mesmo tipo</em>, e não entre todos os irmãos. A diferença para o
+        <code>:nth-child()</code> é importante: se, por exemplo, dentro de uma mesa (<code>table</code>)
+        existem um <code>cup</code> seguido de vários <code>plate</code>, o <code>:nth-child(odd)</code>
+        conta a posição geral do elemento entre TODOS os irmãos (contando o <code>cup</code> na
+        contagem), enquanto o <code>:nth-of-type(odd)</code> ignora o <code>cup</code> e conta apenas a
+        posição do elemento dentro do grupo de elementos <code>plate</code>. Isso evita que a contagem
+        "quebre" quando existe um elemento de outro tipo no meio dos irmãos, o que é muito útil em
+        layouts reais como listas de produtos onde, às vezes, existe um banner ou anúncio intercalado
+        entre os itens.
+    </p>
+
+    <h3>Nível 22 - <code>[for~="mom"]</code></h3>
+    <p>
+        Esse nível usa um seletor de atributo com o modificador <code>~=</code>, que verifica se o
+        valor do atributo é uma <strong>lista de palavras separadas por espaço</strong> e se uma
+        dessas palavras é exatamente "mom". É diferente do seletor <code>[for*="mom"]</code> (contém a
+        substring "mom" em qualquer lugar do texto) e também diferente de <code>[for="mom"]</code>
+        (o valor inteiro do atributo precisa ser exatamente "mom", nada mais). Por exemplo, um elemento
+        com <code>for="dad mom"</code> seria selecionado por <code>[for~="mom"]</code>, mas não por
+        <code>[for="mom"]</code>. Esse comportamento é o mesmo usado internamente pelo próprio CSS para
+        interpretar o atributo <code>class</code> (que também é uma lista separada por espaços), o que
+        explica por que <code>.classe</code> funciona mesmo quando o elemento tem várias classes.
+    </p>
+
+    <p><sub>obs.: tabela construída como registro de estudo após jogar todos os níveis do jogo; os
+    seletores exatos podem variar levemente conforme a versão do jogo, mas representam fielmente a
+    lógica pedida em cada fase.</sub></p>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3 - Prática de Seletores CSS</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+            line-height: 1.6;
+        }
+        h1 { color: #00aeff; }
+
+        /* cada parágrafo com fonte e cor diferentes, selecionado por classe */
+        p.paragrafo-1 { font-family: Georgia, serif; color: #2c3e50; }
+        p.paragrafo-2 { font-family: 'Courier New', monospace; color: #8e44ad; }
+        p.paragrafo-3 { font-family: Verdana, sans-serif; color: #16a085; }
+        p.paragrafo-4 { font-family: 'Trebuchet MS', sans-serif; color: #c0392b; }
+
+        /* palavras específicas marcadas com span, cada uma com um estilo próprio */
+        span.destaque-amarelo { background-color: yellow; padding: 0 3px; }
+        span.destaque-negrito { font-weight: bold; text-decoration: underline; }
+        span.destaque-italico { font-style: italic; color: crimson; }
+        span.destaque-caixa { text-transform: uppercase; letter-spacing: 1px; background-color: #dff0d8; padding: 0 3px; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 3 - Prática de seletores (Lorem Ipsum)</h1>
+
+    <p class="paragrafo-1">
+        <span class="destaque-amarelo">Lorem ipsum</span> dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut <span class="destaque-negrito">labore et dolore</span> magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+    </p>
+
+    <p class="paragrafo-2">
+        Duis aute irure dolor in <span class="destaque-italico">reprehenderit in voluptate</span> velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+        in culpa qui <span class="destaque-caixa">officia deserunt</span> mollit anim id est laborum.
+    </p>
+
+    <p class="paragrafo-3">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+        <span class="destaque-amarelo">doloremque laudantium</span>, totam rem aperiam, eaque ipsa quae ab
+        illo inventore veritatis et quasi architecto <span class="destaque-negrito">beatae vitae dicta</span>
+        sunt explicabo.
+    </p>
+
+    <p class="paragrafo-4">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+        <span class="destaque-italico">consequuntur magni dolores</span> eos qui ratione voluptatem sequi
+        nesciunt, neque porro quisquam est, qui dolorem ipsum quia dolor sit amet
+        <span class="destaque-caixa">consectetur adipisci velit</span>.
+    </p>
+
+    <p><sub>Cada parágrafo recebeu uma classe própria (<code>.paragrafo-1</code> a
+    <code>.paragrafo-4</code>) para controlar fonte e cor, e cada palavra destacada recebeu uma classe de
+    <code>&lt;span&gt;</code> diferente para demonstrar seletores de classe combinados com estilos de
+    texto (cor de fundo, negrito, itálico e caixa alta).</sub></p>
+
+</body>
+</html>

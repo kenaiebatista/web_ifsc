@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2 - Card Mobile com Flexbox</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            width: 260px;
+            border: 2px solid #b833ff;
+            border-radius: 10px;
+            padding: 25px 20px;
+            background-color: #fff;
+        }
+        .logo {
+            color: #999;
+            font-size: 0.95em;
+            margin-bottom: 25px;
+        }
+        .linha {
+            height: 12px;
+            background-color: #e2e2e2;
+            border-radius: 6px;
+            margin-bottom: 14px;
+        }
+        .linha:nth-child(2) { width: 90%; }
+        .linha:nth-child(3) { width: 100%; }
+        .linha:nth-child(4) { width: 100%; }
+        .linha:nth-child(5) { width: 70%; margin-bottom: 40px; }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #e2e2e2;
+            align-self: center;
+            margin-bottom: 16px;
+        }
+        .linha-final {
+            width: 50%;
+            height: 10px;
+            background-color: #e2e2e2;
+            border-radius: 6px;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <div class="card">
+        <div class="logo">Company Logo</div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+        <div class="linha"></div>
+        <div class="avatar"></div>
+        <div class="linha-final"></div>
+    </div>
+
+</body>
+</html>

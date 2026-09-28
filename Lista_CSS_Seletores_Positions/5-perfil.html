@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5 - Perfil (Display e Position)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 30px;
+            color: #333;
+        }
+        .cartao {
+            display: flex;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+        .coluna-lateral {
+            width: 260px;
+            flex-shrink: 0;
+            background-color: #fafafa;
+            border-right: 1px solid #eee;
+            padding: 20px;
+        }
+        .coluna-lateral img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+        .coluna-lateral h3 {
+            margin-top: 25px;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .campo {
+            margin-bottom: 14px;
+        }
+        .campo strong {
+            display: block;
+            font-size: 0.85em;
+            color: #999;
+            font-weight: normal;
+        }
+        .coluna-principal {
+            padding: 25px 30px;
+            flex-grow: 1;
+        }
+        .coluna-principal h1 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: #222;
+        }
+        .bio {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .experiencia {
+            position: relative;
+            padding-left: 18px;
+            border-left: 2px solid #ddd;
+            margin-bottom: 18px;
+        }
+        .experiencia::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            background-color: #00aeff;
+            border-radius: 50%;
+        }
+        .experiencia .cargo-linha {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        .experiencia .empresa-linha {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 6px;
+        }
+        .experiencia ul {
+            margin: 5px 0 0 0;
+            padding-left: 18px;
+        }
+        @media (max-width: 640px) {
+            .cartao { flex-direction: column; }
+            .coluna-lateral { width: 100%; border-right: none; border-bottom: 1px solid #eee; }
+        }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <div class="cartao">
+        <aside class="coluna-lateral">
+            <img src="imgs/perfil.jpg" alt="Foto de perfil de Joana Barbosa">
+
+            <h3>Pessoal</h3>
+            <div class="campo"><strong>Nome</strong>Joana Barbosa</div>
+            <div class="campo"><strong>Endereço</strong>Rua da Paz, 250<br>7100-011 Lisboa</div>
+            <div class="campo"><strong>Número de telefone</strong>9630002121</div>
+            <div class="campo"><strong>Email</strong>exemplos@cvmaker.pt</div>
+
+            <h3>Interesses</h3>
+            <div class="campo">Marketing digital, fotografia, viagens</div>
+        </aside>
+
+        <main class="coluna-principal">
+            <h1>Joana Barbosa</h1>
+            <p class="bio">
+                Uma marketer digital com sentido de missão e com mais de três anos de experiência em
+                conduzir iniciativas promocionais. Sou uma especialista em online marketing, lead
+                generation e nurturing. Tenho uma comunicação exemplar, aptidões interpessoais e
+                trabalho bem sobre pressão de forma a atingir os objetivos.
+            </p>
+
+            <h2>Experiência profissional</h2>
+
+            <div class="experiencia">
+                <div class="cargo-linha"><span>Junior SEO Marketer</span><span>2017 - 2019</span></div>
+                <div class="empresa-linha">Cyanca, Lisboa</div>
+                <ul>
+                    <li>Página on/off SEO</li>
+                    <li>Estratégias de linkbuilding</li>
+                    <li>Criação de conteúdo relevante</li>
+                    <li>Trabalho com ferramentas online: Ahrefs, Google Analytics, Google Search Console,
+                        Google Adwords</li>
+                </ul>
+            </div>
+
+            <div class="experiencia">
+                <div class="cargo-linha"><span>Assistente de Vendas</span><span>2015 - 2016</span></div>
+                <div class="empresa-linha">Salsa, Lisboa</div>
+                <ul>
+                    <li>Contribuição para os objetivos de vendas</li>
+                    <li>Gestão de inventário</li>
+                    <li>Apoio a clientes</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <p style="max-width:900px; margin: 20px auto 0;">
+        <strong>Por que a exibição é assim:</strong> o cartão inteiro usa <code>display: flex</code> para
+        dividir a página em duas colunas (lateral fixa de 260px e coluna principal flexível). Dentro da
+        coluna lateral, cada bloco de informação é uma <code>div</code> comum empilhada verticalmente
+        (comportamento padrão de <code>display: block</code>). Já o "pontinho" azul ao lado de cada
+        experiência profissional usa <code>position: absolute</code> dentro de um contêiner com
+        <code>position: relative</code>, permitindo posicioná-lo exatamente sobre a borda da linha do
+        tempo sem afetar o fluxo do texto ao lado.
+    </p>
+
+</body>
+</html>

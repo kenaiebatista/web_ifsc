@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4c - Position (absolute)</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .palco {
+            position: relative; /* vira a "referência" para os filhos com position:absolute */
+            width: 100%;
+            height: 320px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+        .quadrado {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+        }
+        .vermelho { background-color: #ff4136; top: 20px; left: 20px; }
+        .amarelo  { background-color: #ffdc00; top: 20px; right: 20px; display: flex; align-items: flex-end; justify-content: flex-start; font-size: 0.7em; padding: 2px; }
+        .magenta  { background-color: #ff00ff; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .azul     { background-color: #0074d9; bottom: 20px; left: 20px; }
+        .verde    { background-color: #2ecc40; bottom: 20px; right: 20px; }
+        h1 { text-align: center; }
+        p.explicacao { max-width: 700px; margin: 20px auto; padding: 0 15px; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 4c - Position: absolute</h1>
+
+    <div class="palco">
+        <div class="quadrado vermelho"></div>
+        <div class="quadrado amarelo">box2</div>
+        <div class="quadrado magenta"></div>
+        <div class="quadrado azul"></div>
+        <div class="quadrado verde"></div>
+    </div>
+
+    <p class="explicacao">
+        <strong>Por que a exibição é assim:</strong> o elemento <code>.palco</code> recebeu
+        <code>position: relative</code>, o que não muda sua própria posição, mas o transforma no
+        "bloco de referência" para qualquer descendente posicionado. Cada quadrado recebeu
+        <code>position: absolute</code>, saindo do fluxo normal do documento (por isso eles não
+        empurram uns aos outros como aconteceria com <code>display: block</code>) e passando a ser
+        posicionado com <code>top</code>, <code>left</code>, <code>right</code> e <code>bottom</code>
+        relativos ao <code>.palco</code>. É assim que o vermelho fica preso no canto superior esquerdo
+        (<code>top</code> + <code>left</code>), o amarelo (rotulado "box2") no canto superior direito
+        (<code>top</code> + <code>right</code>), o azul e o verde nos cantos inferiores
+        (<code>bottom</code> + <code>left</code>/<code>right</code>), e o magenta é centralizado usando
+        <code>top: 50%; left: 50%;</code> combinado com <code>transform: translate(-50%, -50%)</code>
+        para compensar a própria largura/altura da caixa.
+    </p>
+
+</body>
+</html>

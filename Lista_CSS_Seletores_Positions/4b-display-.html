@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4b - Display (inline-block / flex)</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .linha {
+            display: flex; /* muda o display do CONTAINER: os filhos viram itens em linha (row) */
+        }
+        .caixa {
+            flex: 1; /* cada caixa divide igualmente a largura disponível */
+            height: 90px;
+            box-sizing: border-box;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+        .c1 { background-color: #6a3fd1; }
+        .c2 { background-color: #2ecc40; }
+        .c3 { background-color: #ff4136; }
+        .c4 { background-color: #ffdc00; color: #333; }
+        h1 { text-align: center; }
+        p.explicacao { max-width: 700px; margin: 20px auto; padding: 0 15px; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 4b - Display: flex (itens em linha)</h1>
+
+    <div class="linha">
+        <div class="caixa c1">1</div>
+        <div class="caixa c2">2</div>
+        <div class="caixa c3">3</div>
+        <div class="caixa c4">4</div>
+    </div>
+
+    <p class="explicacao">
+        <strong>Por que a exibição é assim:</strong> aqui o elemento pai (<code>.linha</code>) recebeu
+        <code>display: flex</code>, o que muda o comportamento padrão das divs filhas: em vez de cada
+        uma ocupar 100% da largura e quebrar linha (como no exemplo 4a com <code>display: block</code>),
+        elas passam a se organizar lado a lado, em uma única linha (eixo principal horizontal por
+        padrão). Como cada caixa recebeu <code>flex: 1</code>, o espaço total é dividido igualmente
+        entre as quatro, resultando nas quatro faixas coloridas lado a lado com a mesma largura. O mesmo
+        efeito visual também poderia ser obtido com <code>display: inline-block</code> ou
+        <code>display: table-cell</code> nas divs, ou ainda com <code>float: left</code>, mas o
+        <code>flex</code> é a forma mais moderna e simples de fazer esse alinhamento.
+    </p>
+
+</body>
+</html>

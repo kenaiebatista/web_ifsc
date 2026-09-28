@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5 - Site Responsivo de Tópicos (Grid)</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; min-height: 100%; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+        }
+        h1 { color: #333; }
+
+        .grid-topicos {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 60px;
+            grid-template-rows: repeat(2, 130px);
+            grid-template-areas:
+                "web   html  css   bola"
+                "position flex flex  bola";
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .grid-topicos a {
+            display: flex;
+            align-items: flex-end;
+            padding: 14px;
+            border-radius: 6px;
+            color: #222;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .grid-topicos a:hover { transform: translateY(-4px); box-shadow: 0 6px 14px rgba(0,0,0,0.2); }
+
+        .web      { grid-area: web;      background-color: #ff9800; }
+        .html     { grid-area: html;     background-color: #f4a7a0; }
+        .css      { grid-area: css;      background-color: #a4c9c9; color: #222; }
+        .position { grid-area: position; background-color: #b8cbe0; }
+        .flex     { grid-area: flex;     background-color: #a4c639; color: #fff; }
+        .grid-item{ grid-area: grid-item;}
+
+        .bola-wrap {
+            grid-area: bola;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .bola {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            text-decoration: none;
+            color: #fff;
+        }
+        .animate { background-color: #ff5722; }
+
+        .barra-grid {
+            grid-column: 1 / span 3;
+            display: none;
+        }
+
+        .rodape-topicos {
+            width: 100%;
+            max-width: 800px;
+        }
+        .grid-full {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #ffc107;
+            border-radius: 6px;
+            padding: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #222;
+            text-align: center;
+        }
+
+        /* Abaixo de 600px: todos os tópicos viram uma lista vertical, um sobre o outro */
+        @media (max-width: 600px) {
+            .grid-topicos {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                grid-template-areas:
+                    "web"
+                    "html"
+                    "css"
+                    "position"
+                    "flex"
+                    "bola";
+            }
+            .grid-topicos a { min-height: 70px; align-items: center; justify-content: center; }
+            .bola-wrap { flex-direction: row; justify-content: center; gap: 20px; padding: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Conteúdos estudados em PPI</h1>
+    <p>Site responsivo com links para os materiais de cada tópico. Redimensione a janela (ou abra no
+    celular) para ver o grid virar uma lista vertical abaixo de 600px de largura.</p>
+
+    <div class="grid-topicos">
+        <a class="web" href="../ListaHTML/1.html">WEB</a>
+        <a class="html" href="../ListaHTML/4_curriculo.html">HTML</a>
+        <a class="css" href="../Lista_CSS_Seletores_Positions/3-pratica_seletores.html">CSS</a>
+        <a class="position" href="../Lista_CSS_Seletores_Positions/4c-display-.html">Position</a>
+        <a class="flex" href="../Lista_Flexbox/5-holy-grail.html">Flex</a>
+        <div class="bola-wrap">
+            <a class="bola animate" href="../Lista_CSS_Seletores_Positions/6-barquinho.html" title="Animate">🎬</a>
+        </div>
+    </div>
+
+    <div class="rodape-topicos">
+        <a class="grid-full" href="2-layout-header-nav-content-footer.html">Grid</a>
+    </div>
+
+</body>
+</html>

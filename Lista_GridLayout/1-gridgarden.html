@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 1 - CSS Grid Garden</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #222;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0 auto;
+            max-width: 950px;
+            padding: 0 20px 40px 20px;
+        }
+        h1 { color: #00aeff; }
+        h2 { color: #0078be; margin-top: 30px; }
+        p.intro { background: bisque; padding: 10px 15px; border-radius: 8px; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; background-color: #fff; }
+        table, th, td { border: 1px solid #999; }
+        th, td { padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #00aeff; color: white; }
+        code { background-color: #282828; color: #dcdcdc; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; }
+        tr:nth-child(even) { background-color: #eef6fb; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 1 - CSS Grid Garden</h1>
+
+    <p class="intro">
+        Jogo jogado: <a href="https://cssgridgarden.com/" target="_blank">Grid Garden</a>. Cada nível
+        pede para regar (<code>background</code>) e crescer (<code>grow</code>) as cenouras usando
+        propriedades de CSS Grid aplicadas ao contêiner (o canteiro) ou aos itens individuais.
+    </p>
+
+    <table>
+        <caption><strong>Resumo dos níveis jogados</strong></caption>
+        <thead><tr><th>Nível</th><th>Propriedade(s) CSS</th><th>Resultado</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td><code>grid-column-gap: 20px;</code></td><td>Adiciona espaço entre as colunas do grid.</td></tr>
+            <tr><td>2</td><td><code>grid-row-gap: 20px;</code></td><td>Adiciona espaço entre as linhas do grid.</td></tr>
+            <tr><td>3</td><td><code>grid-gap: 20px 50px;</code></td><td>Atalho para definir os dois espaçamentos (linha e coluna) de uma vez.</td></tr>
+            <tr><td>4</td><td><code>grid-column-start / grid-column-end</code></td><td>Define em qual linha de grade a coluna do item começa e termina.</td></tr>
+            <tr><td>5</td><td><code>grid-row-start / grid-row-end</code></td><td>Define em qual linha de grade a linha do item começa e termina.</td></tr>
+            <tr><td>6</td><td><code>grid-column: 2 / 4;</code></td><td>Atalho combinando início e fim da coluna em uma só declaração.</td></tr>
+            <tr><td>7</td><td><code>grid-row: 1 / 3;</code></td><td>Atalho combinando início e fim da linha.</td></tr>
+            <tr><td>8</td><td><code>grid-column: 2 / span 2;</code></td><td>Define quantas colunas o item deve ocupar a partir do início, usando <code>span</code>.</td></tr>
+            <tr><td>9</td><td><code>grid-row: 2 / span 2;</code></td><td>Mesma lógica do <code>span</code>, aplicada às linhas.</td></tr>
+            <tr><td>10</td><td><code>justify-self: start/center/end;</code></td><td>Alinha um item individual dentro da própria célula, no eixo horizontal.</td></tr>
+            <tr><td>11</td><td><code>align-self: start/center/end;</code></td><td>Alinha um item individual dentro da própria célula, no eixo vertical.</td></tr>
+            <tr><td>12</td><td><code>justify-items</code></td><td>Alinha todos os itens do grid de uma vez, no eixo horizontal (aplicado no contêiner).</td></tr>
+            <tr><td>13</td><td><code>align-items</code></td><td>Alinha todos os itens do grid de uma vez, no eixo vertical (aplicado no contêiner).</td></tr>
+            <tr><td>14</td><td><code>grid-template-columns: 50px 150px auto 150px 50px;</code></td><td>Define larguras diferentes e específicas para cada coluna.</td></tr>
+            <tr><td>15</td><td><code>grid-template-rows</code></td><td>Define alturas diferentes para cada linha, mesma lógica das colunas.</td></tr>
+            <tr><td>16</td><td><code>order</code></td><td>Reordena visualmente um item dentro do grid sem alterar o HTML.</td></tr>
+            <tr><td>17</td><td><code>grid-template-columns: repeat(5, 1fr);</code></td><td>Usa <code>repeat()</code> para não precisar repetir manualmente o mesmo valor várias vezes.</td></tr>
+            <tr><td>18</td><td><code>grid-column: 1 / -1;</code></td><td>Usa índice negativo para fazer o item ocupar da primeira até a última coluna, sem saber o total.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Explicação detalhada de 1 nível</h2>
+
+    <h3>Nível 8 - <code>grid-column: 2 / span 2;</code></h3>
+    <p>
+        Nesse nível, a cenoura precisa crescer ocupando duas colunas do grid, começando na segunda
+        linha de grade vertical. A propriedade usada foi <code>grid-column: 2 / span 2;</code>, que é
+        um atalho para <code>grid-column-start: 2;</code> junto com
+        <code>grid-column-end: span 2;</code>. O primeiro valor (<code>2</code>) indica em qual
+        <strong>linha de grade</strong> (grid line) o item começa - não confundir com "coluna 2", pois
+        as linhas de grade ficam entre as colunas e são numeradas a partir de 1. Já o
+        <code>span 2</code> não indica uma linha de grade fixa como destino, e sim quantas colunas o
+        item deve <em>atravessar</em> a partir do ponto de início. Isso é mais prático do que escrever
+        <code>grid-column: 2 / 4;</code> quando o que importa é "quantas colunas ocupar" e não
+        necessariamente "em qual linha terminar" - a diferença fica mais clara em grids com tamanho de
+        colunas variável, onde contar a quantidade de colunas é mais intuitivo do que calcular a linha
+        de grade final.
+    </p>
+
+    <p><sub>obs.: tabela construída como registro de estudo após jogar todos os níveis do jogo.</sub></p>
+
+</body>
+</html>

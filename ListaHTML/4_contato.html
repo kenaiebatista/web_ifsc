@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4 - Contato</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 16/09/2026-->
+
+    <h1>Fale comigo</h1>
+    <p>
+        Preencha o formulário abaixo para entrar em contato comigo. Os campos com
+        <span>*</span> são obrigatórios. Nenhum dado é realmente enviado, este formulário é apenas
+        para fins de estudo.
+    </p>
+
+    <p><a href="4_curriculo.html">&larr; Voltar para o currículo</a></p>
+
+    <form action="">
+        <label for="inputNome">Nome *</label>
+        <input id="inputNome" name="nome" type="text" placeholder="Digite seu nome completo" required>
+
+        <label for="inputEmail">E-mail *</label>
+        <input id="inputEmail" name="email" type="email" placeholder="seuemail@exemplo.com" required>
+
+        <label for="inputAssunto">Assunto</label>
+        <input id="inputAssunto" name="assunto" type="text" placeholder="Sobre o que você quer falar?">
+
+        <label for="inputEstado">Estado</label>
+        <select id="inputEstado" name="estado">
+            <option value="">Selecione...</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+        </select>
+
+        <label for="inputMensagem">Mensagem</label>
+        <textarea id="inputMensagem" name="mensagem" placeholder="Escreva sua mensagem aqui" rows="5"></textarea>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+</body>
+</html>

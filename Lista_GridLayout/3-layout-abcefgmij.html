@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3 - Grid Layout (A, B, C, E, F, G, M, I, J)</title>
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; height: 100%; }
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            min-width: 100vw;
+            background-color: #fafafa;
+        }
+        .layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 90px 1fr 1fr;
+            grid-template-areas:
+                "a a a b"
+                "c d d d"
+                "c d d d";
+            gap: 12px;
+            width: 90vw;
+            max-width: 700px;
+            height: 80vh;
+            max-height: 500px;
+        }
+        .layout > div {
+            background-color: #3a3a3a;
+            color: #fff;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .a { grid-area: a; }
+        .b { grid-area: b; }
+        .c { grid-area: c; }
+        .d {
+            grid-area: d;
+            background-color: #3a3a3a;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .d div {
+            background-color: #cccccc;
+            color: #333;
+            display: flex;
+            align-items: flex-start;
+            padding: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                grid-template-areas:
+                    "a"
+                    "b"
+                    "c"
+                    "d";
+                height: auto;
+            }
+            .layout > div { min-height: 60px; }
+            .d { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <div class="layout">
+        <div class="a">A</div>
+        <div class="b">B</div>
+        <div class="c">C</div>
+        <div class="d">
+            <div>E</div><div>F</div><div>G</div>
+            <div>M</div><div>I</div><div>J</div>
+        </div>
+    </div>
+
+</body>
+</html>

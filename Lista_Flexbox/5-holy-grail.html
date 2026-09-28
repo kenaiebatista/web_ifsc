@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 5 - Layout Holy Grail com Flex</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Georgia, serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header, footer {
+            background-color: #8bc34a;
+            padding: 20px;
+            font-weight: bold;
+        }
+        .corpo {
+            display: flex;
+            flex: 1;
+        }
+        article {
+            background-color: #f4fff5;
+            flex: 1;
+            padding: 20px;
+        }
+        aside {
+            background-color: #f2f0d8;
+            width: 200px;
+            padding: 20px;
+            order: 2;
+        }
+        nav {
+            background-color: #dcecdf;
+            width: 180px;
+            padding: 20px;
+            order: 3;
+        }
+        article { order: 1; }
+
+        @media (max-width: 700px) {
+            .corpo { flex-direction: column; }
+            aside, nav, article { width: 100%; order: initial; }
+        }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <header>Header</header>
+
+    <div class="corpo">
+        <article>
+            <h2>Article</h2>
+            <p>Conteúdo principal da página, que ocupa o espaço restante (<code>flex: 1</code>) entre a
+            barra lateral e o menu de navegação.</p>
+        </article>
+        <aside>
+            <h2>Aside</h2>
+            <p>Barra lateral com largura fixa.</p>
+        </aside>
+        <nav>
+            <h2>Nav</h2>
+            <p>Menu de navegação com largura fixa.</p>
+        </nav>
+    </div>
+
+    <footer>Footer</footer>
+
+</body>
+</html>

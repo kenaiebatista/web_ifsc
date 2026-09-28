@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4a - Display (block)</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; }
+        .caixa {
+            width: 100%;
+            height: 90px;
+            box-sizing: border-box;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            /* nenhuma propriedade "display" foi definida além do padrão dos elementos abaixo */
+        }
+        /* as 4 divs abaixo NÃO têm display definido: uma div é display:block por padrão,
+           por isso cada uma ocupa 100% da largura disponível e "empurra" a próxima para a
+           linha de baixo - é exatamente esse comportamento que gera o empilhamento vertical */
+        .c1 { background-color: #6a3fd1; }
+        .c2 { background-color: #2ecc40; }
+        .c3 { background-color: #ff4136; }
+        .c4 { background-color: #ffdc00; color: #333; }
+        h1 { font-family: Arial, sans-serif; text-align: center; }
+        p.explicacao { max-width: 700px; margin: 20px auto; padding: 0 15px; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 4a - Display: block (padrão)</h1>
+
+    <div class="caixa c1">1</div>
+    <div class="caixa c2">2</div>
+    <div class="caixa c3">3</div>
+    <div class="caixa c4">4</div>
+
+    <p class="explicacao">
+        <strong>Por que a exibição é assim:</strong> os quatro elementos são <code>&lt;div&gt;</code>,
+        que por padrão têm <code>display: block</code>. Um elemento de bloco sempre ocupa 100% da
+        largura do seu elemento pai (o <code>&lt;body&gt;</code>, nesse caso) e força uma quebra de
+        linha antes e depois de si mesmo. É por isso que as quatro faixas coloridas aparecem uma embaixo
+        da outra, cada uma esticada de ponta a ponta da tela, mesmo sem nenhuma regra CSS explícita de
+        largura ou de posicionamento vertical.
+    </p>
+
+</body>
+</html>

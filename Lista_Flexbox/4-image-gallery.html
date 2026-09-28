@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4 - Galeria de Imagens com Flexbox</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .galeria {
+            display: flex;
+            width: 100%;
+            max-width: 900px;
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        .painel {
+            position: relative;
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            transition: flex 0.6s ease;
+            cursor: pointer;
+        }
+        .galeria:hover .painel { flex: 1; }
+        .galeria .painel:hover { flex: 5; }
+
+        .painel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.55), transparent 55%);
+        }
+
+        .painel .legenda {
+            position: absolute;
+            bottom: 14px;
+            left: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            z-index: 2;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease 0.2s;
+        }
+        .painel:hover .legenda { opacity: 1; }
+
+        .icone {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            flex-shrink: 0;
+        }
+
+        .p1 { background-image: url('https://picsum.photos/seed/floresta/500/500'); }
+        .p2 { background-image: url('https://picsum.photos/seed/estrada/500/500'); }
+        .p3 { background-image: url('https://picsum.photos/seed/vento/500/500'); }
+        .p4 { background-image: url('https://picsum.photos/seed/rio/500/500'); }
+        .p5 { background-image: url('https://picsum.photos/seed/gelo/500/500'); }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <div class="galeria">
+        <div class="painel p1">
+            <div class="legenda"><span class="icone">🚶</span> Trilha na floresta</div>
+        </div>
+        <div class="painel p2">
+            <div class="legenda"><span class="icone">❄️</span> Estrada nevada</div>
+        </div>
+        <div class="painel p3">
+            <div class="legenda"><span class="icone">💨</span> Ventania</div>
+        </div>
+        <div class="painel p4">
+            <div class="legenda"><span class="icone">💧</span> Rio</div>
+        </div>
+        <div class="painel p5">
+            <div class="legenda"><span class="icone">🧊</span> Geleira</div>
+        </div>
+    </div>
+
+    <p style="position:absolute; bottom:10px; left:20px; max-width:600px; font-size:0.85em; color:#666;">
+        <sub>obs.: cada painel usa <code>flex: 1</code> por padrão e, ao passar o mouse
+        (<code>:hover</code>), o painel sob o cursor recebe <code>flex: 5</code>, fazendo-o crescer e
+        "empurrar" os demais com uma transição suave (<code>transition: flex</code>). Imagens aleatórias
+        obtidas do serviço <a href="https://picsum.photos/" target="_blank">picsum.photos</a>.</sub>
+    </p>
+
+</body>
+</html>

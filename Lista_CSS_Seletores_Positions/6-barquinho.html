@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 6 - Barquinho no Mar (CSS puro)</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        h1 { text-align: center; }
+
+        .cena {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 320px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            /* céu com gradiente linear */
+            background: linear-gradient(to bottom, #8fd3f4 0%, #d6f0fb 70%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* ---------- NUVEM ---------- */
+        .nuvem {
+            position: absolute;
+            top: 40px;
+            left: -150px;
+            width: 90px;
+            height: 30px;
+            background: #ffffff;
+            border-radius: 50px;
+            box-shadow:
+                25px -15px 0 5px #ffffff,
+                55px -8px 0 0px #ffffff,
+                20px 10px 0 8px #ffffff;
+            animation: atravessar-ceu 18s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes atravessar-ceu {
+            from { left: -150px; }
+            to   { left: 100%; }
+        }
+
+        /* ---------- MAR ---------- */
+        .mar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background-color: #1e6fd9;
+            z-index: 3;
+        }
+
+        .mar::before,
+        .mar::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 200%;
+            height: 20px;
+            background-image: radial-gradient(circle at 10px 10px, #1e6fd9 10px, transparent 11px);
+            background-size: 20px 20px;
+            background-repeat: repeat-x;
+            animation: ondular 4s linear infinite;
+        }
+
+        .mar::after {
+            top: -4px;
+            opacity: 0.6;
+            animation-duration: 6s;
+            animation-direction: reverse;
+        }
+
+        @keyframes ondular {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-20px); }
+        }
+
+        /* ---------- BARQUINHO ---------- */
+        .barquinho {
+            position: absolute;
+            bottom: 34%;
+            left: -80px;
+            width: 70px;
+            height: 55px;
+            z-index: 4;
+            animation:
+                navegar 14s linear infinite,
+                balancar 2s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        /* casco do barco */
+        .barquinho .casco {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 22px;
+            background-color: #5a3921;
+            border-radius: 0 0 35px 35px;
+        }
+
+        /* mastro */
+        .barquinho .mastro {
+            position: absolute;
+            bottom: 20px;
+            left: 33px;
+            width: 4px;
+            height: 35px;
+            background-color: #3b2414;
+        }
+
+        /* vela */
+        .barquinho .vela {
+            position: absolute;
+            bottom: 38px;
+            left: 12px;
+            width: 0;
+            height: 0;
+            border-left: 24px solid transparent;
+            border-bottom: 34px solid #1e6fd9;
+        }
+
+        @keyframes navegar {
+            from { left: -80px; }
+            to   { left: 100%; }
+        }
+
+        @keyframes balancar {
+            0%, 100% { transform: rotate(-4deg); }
+            50%      { transform: rotate(4deg); }
+        }
+
+        p.explicacao { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        code { background: #282828; color: #dcdcdc; padding: 1px 5px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 6 - Animação de barquinho no mar (CSS puro)</h1>
+
+    <div class="cena">
+        <div class="nuvem"></div>
+        <div class="barquinho">
+            <div class="vela"></div>
+            <div class="mastro"></div>
+            <div class="casco"></div>
+        </div>
+        <div class="mar"></div>
+    </div>
+
+    <p class="explicacao">
+        <strong>Como a cena foi montada:</strong> o contêiner <code>.cena</code> tem
+        <code>position: relative</code> e um fundo em <code>linear-gradient</code> simulando o céu. O
+        <strong>barquinho</strong> é uma <code>div</code> com <code>position: absolute</code>, composta
+        por três partes (casco, mastro e vela) também posicionadas de forma absoluta dentro dele; duas
+        animações são aplicadas ao mesmo tempo: <code>navegar</code> (move a div da esquerda para a
+        direita, em loop infinito, usando <code>@keyframes</code> sobre a propriedade <code>left</code>)
+        e <code>balancar</code> (gira levemente o barco com <code>transform: rotate()</code> para simular
+        o balanço nas ondas). O <strong>mar</strong> é uma <code>div</code> azul fixada na parte de baixo
+        da cena, com <code>z-index</code> maior que o do barco só na base (o corpo do barco fica visível
+        por cima da linha do mar porque sua posição vertical - <code>bottom</code> - o mantém acima dela);
+        os pseudo-elementos <code>::before</code> e <code>::after</code> usam
+        <code>radial-gradient</code> repetido para desenhar as pequenas ondulações da superfície da água,
+        animadas com <code>translateX</code> para dar sensação de movimento contínuo. Por fim, a
+        <strong>nuvem</strong> é montada com <code>border-radius</code> arredondando uma div e
+        <code>box-shadow</code> criando "cópias" extras da forma para simular os volumes de uma nuvem,
+        atravessando o céu lentamente com sua própria animação de <code>@keyframes</code> na propriedade
+        <code>left</code>.
+    </p>
+
+</body>
+</html>

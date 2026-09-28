@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2 - Especificidade de Seletores CSS</title>
+    <style>
+        /*regra 1*/ li{color:red;}
+        /*regra 2*/ .churras{color:green;}
+        /*regra 3*/ .fruta{color:gray}
+        /*regra 4*/ li+li.churras{color: black;}
+        /*regra 5*/ .churras[draggable="true"]{color: magenta;}
+        /*regra 6*/ #lip1,#lip2,#lip3{color:blue}
+        /*regra 7*/ #lip3.fruta{color:orange}
+        /*regra 8*/ ol>li.churras#lip5{color:purple}
+
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+            line-height: 1.5;
+        }
+        h1 { color: #00aeff; }
+        h2 { color: #0078be; margin-top: 30px; }
+        ol { font-size: 1.2em; background: #fff; padding: 15px 40px; border-radius: 8px; border: 1px solid #ccc; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; background: #fff; }
+        table, th, td { border: 1px solid #999; }
+        th, td { padding: 8px; text-align: left; vertical-align: top; }
+        th { background-color: #00aeff; color: white; }
+        code { background: #282828; color: #dcdcdc; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; }
+        .cor-final { font-weight: bold; }
+    </style>
+</head>
+<body>
+<!--Autor: [Kenai Batista] - Criado em 21/09/2026-->
+
+    <h1>Atividade 2 - Especificidade de seletores CSS</h1>
+
+    <p>Reprodução do código apresentado no enunciado. A cor de cada item abaixo é o resultado real da
+    especificidade calculada pelo navegador entre as 8 regras CSS declaradas:</p>
+
+    <ol>
+        <!--item 1--> <li id="lip0">Abacaxi</li>
+        <!--item 2--> <li class="fruta">Melão</li>
+        <!--item 3--> <li id="lip2" class="fruta">Pera</li>
+        <!--item 4--> <li id="lip3" class="fruta">Uva</li>
+        <!--item 5--> <li id="lip4" class="fruta">Maçã</li>
+        <!--item 6--> <li class="churras">Carne</li>
+        <!--item 7--> <li class="churras">Linguiça</li>
+        <!--item 8--> <li id="lip7" class="churras" draggable="true">Pão de alho</li>
+    </ol>
+
+    <h2>Regras usadas e sua especificidade</h2>
+    <p>Especificidade calculada no formato (id, classe/atributo/pseudo-classe, tipo/pseudo-elemento):</p>
+    <table>
+        <thead><tr><th>Regra</th><th>Seletor</th><th>Especificidade</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td><code>li</code></td><td>(0,0,1) - 1 tipo</td></tr>
+            <tr><td>2</td><td><code>.churras</code></td><td>(0,1,0) - 1 classe</td></tr>
+            <tr><td>3</td><td><code>.fruta</code></td><td>(0,1,0) - 1 classe</td></tr>
+            <tr><td>4</td><td><code>li+li.churras</code></td><td>(0,1,2) - 1 classe + 2 tipos</td></tr>
+            <tr><td>5</td><td><code>.churras[draggable="true"]</code></td><td>(0,2,0) - 1 classe + 1 atributo</td></tr>
+            <tr><td>6</td><td><code>#lip1,#lip2,#lip3</code></td><td>(1,0,0) - 1 id (cada seletor do grupo vale sozinho)</td></tr>
+            <tr><td>7</td><td><code>#lip3.fruta</code></td><td>(1,1,0) - 1 id + 1 classe</td></tr>
+            <tr><td>8</td><td><code>ol&gt;li.churras#lip5</code></td><td>(1,1,2) - 1 id + 1 classe + 2 tipos</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Explicação item a item</h2>
+    <table>
+        <thead><tr><th>Item</th><th>Regras que combinam</th><th>Regra vencedora</th><th>Por quê</th></tr></thead>
+        <tbody>
+            <tr>
+                <td>1. Abacaxi <code>#lip0</code></td>
+                <td>regra 1 (<code>li</code>)</td>
+                <td class="cor-final" style="color:red">regra 1 - vermelho</td>
+                <td>Nenhuma classe ou id bate com as outras regras (o id <code>lip0</code> não está listado
+                em nenhum seletor). Sobra apenas o seletor de tipo <code>li</code>.</td>
+            </tr>
+            <tr>
+                <td>2. Melão <code>.fruta</code></td>
+                <td>regra 1 (<code>li</code>) e regra 3 (<code>.fruta</code>)</td>
+                <td class="cor-final" style="color:gray">regra 3 - cinza</td>
+                <td>Um seletor de classe (0,1,0) sempre vence um seletor de tipo (0,0,1), independente da
+                ordem em que as regras foram escritas.</td>
+            </tr>
+            <tr>
+                <td>3. Pera <code>#lip2.fruta</code></td>
+                <td>regra 1 (<code>li</code>), regra 3 (<code>.fruta</code>) e regra 6 (<code>#lip2</code>,
+                dentro do grupo <code>#lip1,#lip2,#lip3</code>)</td>
+                <td class="cor-final" style="color:blue">regra 6 - azul</td>
+                <td>Um seletor de id (1,0,0) vence qualquer combinação de classes e tipos. Mesmo a regra 6
+                sendo um seletor agrupado, cada seletor do grupo (<code>#lip2</code> nesse caso) tem
+                especificidade de id sozinho.</td>
+            </tr>
+            <tr>
+                <td>4. Uva <code>#lip3.fruta</code></td>
+                <td>regra 1 (<code>li</code>), regra 3 (<code>.fruta</code>), regra 6 (<code>#lip3</code>)
+                e regra 7 (<code>#lip3.fruta</code>)</td>
+                <td class="cor-final" style="color:orange">regra 7 - laranja</td>
+                <td>As regras 6 e 7 empatam no id (1,0,0), mas a regra 7 ainda soma uma classe
+                (<code>.fruta</code>), ficando com especificidade (1,1,0), maior que a da regra 6 (1,0,0).
+                Por isso a regra mais específica (id + classe) vence o id sozinho.</td>
+            </tr>
+            <tr>
+                <td>5. Maçã <code>#lip4.fruta</code></td>
+                <td>regra 1 (<code>li</code>) e regra 3 (<code>.fruta</code>)</td>
+                <td class="cor-final" style="color:gray">regra 3 - cinza</td>
+                <td>O id <code>lip4</code> não aparece em nenhum seletor (regra 6 só lista lip1, lip2 e
+                lip3), então a disputa fica só entre tipo e classe, e a classe vence.</td>
+            </tr>
+            <tr>
+                <td>6. Carne <code>.churras</code></td>
+                <td>regra 1 (<code>li</code>), regra 2 (<code>.churras</code>) e regra 4
+                (<code>li+li.churras</code>)</td>
+                <td class="cor-final" style="color:black">regra 4 - preto</td>
+                <td>Este item é o 6º <code>li</code> e seu irmão imediatamente anterior (item 5, Maçã)
+                também é um <code>li</code> - logo o seletor combinador <code>li+li.churras</code> se
+                aplica. Sua especificidade (0,1,2) é maior que a da regra 2 sozinha (0,1,0), pois soma dois
+                seletores de tipo extras.</td>
+            </tr>
+            <tr>
+                <td>7. Linguiça <code>.churras</code></td>
+                <td>regra 1 (<code>li</code>), regra 2 (<code>.churras</code>) e regra 4
+                (<code>li+li.churras</code>)</td>
+                <td class="cor-final" style="color:black">regra 4 - preto</td>
+                <td>Mesmo raciocínio do item 6: o irmão anterior (item 6, Carne) também é um
+                <code>li</code>, então o combinador <code>li+li.churras</code> volta a valer e vence a
+                regra 2 por ter maior especificidade.</td>
+            </tr>
+            <tr>
+                <td>8. Pão de alho <code>#lip7.churras[draggable]</code></td>
+                <td>regra 1, regra 2, regra 4 (irmão anterior é <code>li</code>) e regra 5
+                (<code>.churras[draggable="true"]</code>)</td>
+                <td class="cor-final" style="color:magenta">regra 5 - magenta</td>
+                <td>Nenhuma regra usa o id <code>lip7</code>, então o id não entra na disputa. Comparando
+                classes/atributos: a regra 5 tem 2 seletores desse tipo (classe + atributo = especificidade
+                0,2,0) contra apenas 1 da regra 4 (0,1,2). Como a coluna de classes/atributos é comparada
+                antes da coluna de tipos, 2 &gt; 1 e a regra 5 vence, mesmo a regra 4 tendo mais seletores
+                de tipo.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><sub>A regra 8 (<code>ol&gt;li.churras#lip5</code>) nunca se aplica a nenhum item da lista, pois
+    não existe nenhum <code>&lt;li id="lip5"&gt;</code> no HTML.</sub></p>
+
+</body>
+</html>
