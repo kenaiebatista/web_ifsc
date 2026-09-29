@@ -30,8 +30,6 @@
             transition: flex 0.6s ease;
             cursor: pointer;
         }
-        .galeria:hover .painel { flex: 1; }
-        .galeria .painel:hover { flex: 5; }
 
         .painel::after {
             content: "";
@@ -53,7 +51,6 @@
             opacity: 0;
             transition: opacity 0.3s ease 0.2s;
         }
-        .painel:hover .legenda { opacity: 1; }
 
         .icone {
             width: 30px;
@@ -94,13 +91,6 @@
             <div class="legenda"><span class="icone">🧊</span> Geleira</div>
         </div>
     </div>
-
-    <p style="position:absolute; bottom:10px; left:20px; max-width:600px; font-size:0.85em; color:#666;">
-        <sub>obs.: cada painel usa <code>flex: 1</code> por padrão e, ao passar o mouse
-        (<code>:hover</code>), o painel sob o cursor recebe <code>flex: 5</code>, fazendo-o crescer e
-        "empurrar" os demais com uma transição suave (<code>transition: flex</code>). Imagens aleatórias
-        obtidas do serviço <a href="https://picsum.photos/" target="_blank">picsum.photos</a>.</sub>
-    </p>
 
 </body>
 </html>
